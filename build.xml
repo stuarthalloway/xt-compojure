@@ -1,0 +1,26 @@
+<project name="compojure" default="test">
+  <description>
+    clj-calendar
+  </description>
+
+  <property name="src.dir" location="src"/>
+  <property name="deps.dir" location="deps"/>
+  <property name="tests.dir" location="test"/>
+
+  <path id="classpath">
+    <path location="${src.dir}"/>
+    <fileset dir="${deps.dir}">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+  
+  <target name="test" description="Run tests">
+    <java fork="true" classname="clojure.lang.Script">
+      <classpath>
+          <path refid="classpath"/>
+          <path location="."/>
+      </classpath>
+      <arg value="${tests.dir}/run.clj"/>
+    </java>
+  </target>
+</project>
