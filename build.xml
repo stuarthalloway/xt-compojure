@@ -4,23 +4,27 @@
   </description>
 
   <property name="src.dir" location="src"/>
-  <property name="deps.dir" location="deps"/>
+  <property name="lib.dir" location="lib"/>
   <property name="tests.dir" location="test"/>
 
   <path id="classpath">
     <path location="${src.dir}"/>
-    <fileset dir="${deps.dir}">
+    <fileset dir="${lib.dir}">
       <include name="*.jar"/>
     </fileset>
+    <path location="${tests.dir}"/>
   </path>
   
   <target name="test" description="Run tests">
-    <java fork="true" classname="clojure.lang.Script">
+    <java fork="true" classname="clojure.main">
       <classpath>
           <path refid="classpath"/>
           <path location="."/>
       </classpath>
-      <arg value="${tests.dir}/run.clj"/>
+      <arg value="-i"/>
+      <arg value="${tests.dir}/test.clj"/>
+      <arg value="-e"/>
+      <arg value='(run-tests!)'/>
     </java>
   </target>
 </project>
