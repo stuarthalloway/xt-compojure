@@ -21,5 +21,8 @@
        (render-template "hello" {}))
   (GET "/demos/stringtemplate/simple"
        (render-template "simple" {:name "World"}))
+  (GET "/demos/stringtemplate/expressions"
+       (render-template "expressions" [ [:numbers (range 5)]
+                                        [:user {"fname" "Stu" "lname" "Halloway"}]]))
   (ANY "*" (page-not-found)))
 
