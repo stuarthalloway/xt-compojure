@@ -6,7 +6,8 @@
      (clojure.contrib.test-is/run-tests '~test-sym)))
 
 (def tests
-     '[clj-calendar.main-test])
+     '[clj-calendar.main-test
+       clj-calendar.html-compojure-test])
 
 (def exit-code (atom 0))
 
