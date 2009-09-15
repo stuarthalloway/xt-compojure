@@ -1,5 +1,5 @@
 (ns clj-calendar.main
-  (:use compojure))
+  (:use compojure relevance.string-template))
 
 (defn calendar []
   [:table {:class "calendar" :border 0 :cellspacing 0 :cellpadding 0}])
@@ -17,5 +17,6 @@
 
 (defroutes clj-calendar-server
   (GET "/" (root))
+  (GET "/demos/stringtemplate/hello" (render-template "hello.html" {}))
   (ANY "*" (page-not-found)))
 
