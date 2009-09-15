@@ -17,6 +17,9 @@
 
 (defroutes clj-calendar-server
   (GET "/" (root))
-  (GET "/demos/stringtemplate/hello" (render-template "hello.html" {}))
+  (GET "/demos/stringtemplate/hello"
+       (render-template "hello" {}))
+  (GET "/demos/stringtemplate/simple"
+       (render-template "simple" {:name "World"}))
   (ANY "*" (page-not-found)))
 
